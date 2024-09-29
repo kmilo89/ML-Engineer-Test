@@ -19,11 +19,12 @@ def main():
     # Open and encode the image
     with open("digit2.jpg", "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
+        print(encoded_string)
     print(process_image(encoded_string))
 
 if __name__ == "__main__":
     # load model
-    with open("clf.pickle", "rb") as f:
+    with open("./models/clf.pickle", "rb") as f:
         clf = pickle.load(f)
     main()
 
