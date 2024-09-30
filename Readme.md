@@ -220,3 +220,21 @@ Para ejecutar las pruebas unitarias, utiliza el siguiente comando en la terminal
 pytest
 ```
 
+
+## GCP
+
+La API ha sido desplegada en Google Cloud Run y está disponible públicamente en la siguiente URL:
+
+Service URL: https://predictor-app-447383300663.us-central1.run.app
+
+### Endpoints Disponibles
+
+POST /predict/
+Este es el endpoint principal para realizar predicciones basadas en imágenes codificadas en base64.
+
+URL: https://predictor-app-447383300663.us-central1.run.app/predict
+
+#### Ejemplo de solicitud
+```sh 
+curl -X POST "https://predictor-app-447383300663.us-central1.run.app/predict/" -H "Co:tent-Type: application/json" -d '{"request_id": "123", "model": "clf.pickle", "image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAALCAAIAAgBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/AOYitTJ8BgJYkn8tZJ4maMLFEpnC5EhXJnBVh5YYZR884Ar/2Q=="}'
+```
