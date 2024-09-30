@@ -17,7 +17,7 @@ def process_image(encoded_image):
 
 def main():
     # Open and encode the image
-    with open("digit2.jpg", "rb") as image_file:
+    with open("./images/digit2.jpg", "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
         print(encoded_string)
     print(process_image(encoded_string))
