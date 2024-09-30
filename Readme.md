@@ -189,4 +189,34 @@ Propuesta para un pipeline automatizado:
 
     La idea es que se deben plantear estrategias para revertir a la versión anterior sin afectar el servicio a los usuarios de la aplicación.
 
+### Estrategia de ejecución.
+
+Ejecutar cada etapa como servicio separado, utilizar conetendores para encapsular las tareas.
+
+- Un contenedor para el servicio de recolección de datos y la validación del data drift que se ejecute periódicamente.
+
+- Definir si el re-entrenamiento estará extrictamente ligado a la detección del data drift o si se realizara re-entrenamiento constante dependiendo de un umbral de cantidad de nuevos datos. Encapsular este proceso en un contenedor que se encargue del proceso de re-entrenamiento, de validar los resultados y almacenar los modelos.
+
+- Establecer un servicio de validación de los modelos que se encargue de comparar las diferentes versiones del modelo a partir de las metricas de rendimiento.
+
+- Un servicio que despligue el modelo utilizando una plataforma de orquestación como kubernetes.
+
+
+
+## Pruebas unitarias
+
+Pruebas unitarias para asegurar el correcto funcionamiento de los endpoints de la API y la validación de entradas.
+
+- **test_predict_success()**: Esta prueba verifica que el endpoint /predict/ funcione correctamente cuando se le proporcionan todos los datos válidos.
+
+- **test_missing_model_field()**: Esta prueba valida el comportamiento de la API cuando falta el campo obligatorio model en la solicitud.
+
+- **test_nonexistent_model()**: Esta prueba asegura que la API maneje correctamente el caso en que se proporciona un nombre de modelo que no existe.
+
+### Ejecución de las pruebas
+
+Para ejecutar las pruebas unitarias, utiliza el siguiente comando en la terminal dentro del entorno virtual:
+```sh
+pytest
+```
 
